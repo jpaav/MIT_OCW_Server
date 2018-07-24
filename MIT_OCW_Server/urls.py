@@ -29,6 +29,6 @@ urlpatterns = [
 	url(r'^parse_all_courses/$', views.parse_all_courses, name="parse_all_courses"),
 	url(r'^parse_course_list/$', views.parse_course_list, name="parse_course_list"),
 	# Data reading views using REST, not authentication required
-	url(r'^get_course/(?P<course_id>[0-9]+)$', views.get_course, name="get_course"),
+	url(r'^get_course/(?P<course_id>[0-9]+)/$', views.get_course, name="get_course"),
 
 ]
