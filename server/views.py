@@ -60,7 +60,7 @@ def parse_all_courses(request):
 			syllabus = syllabus[0:syllabus.index('<!--googleoff: index-->')]
 			course.syllabus = syllabus
 		else:
-			course.syllabus = "No syllabus listed."
+			course.syllabus = "N/A"
 		# Set course readings
 		readings_r = session.request(url=course.url + 'readings/', method='get')
 		if readings_r:
@@ -69,7 +69,7 @@ def parse_all_courses(request):
 			readings = readings[0:readings.index('<!--googleoff: index-->')]
 			course.readings = readings
 		else:
-			course.readings = "No readings listed."
+			course.readings = "N/A"
 		# Set course tools
 		tools_r = session.request(url=course.url + 'tools/', method='get')
 		if tools_r:
@@ -78,7 +78,7 @@ def parse_all_courses(request):
 			tools = tools[0:tools.index('<!--googleoff: index-->')]
 			course.tools = tools
 		else:
-			course.tools = "No tools listed."
+			course.tools = "N/A"
 		# Save course
 		course.save()
 		return HttpResponse("Parsed!")
