@@ -1,3 +1,5 @@
+from django.core.management.color import no_style
+from django.db import connection
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 
@@ -16,6 +18,10 @@ def parse_course_list(request):
 	courses = course_list_r.html.find('.course_title')
 	# Clear out old courses
 	Course.objects.all().delete()
+	sequence_sql = connection.ops.sequence_reset_sql(no_style(), [Course])
+	with connection.cursor() as cursor:
+		for sql in sequence_sql:
+			cursor.execute(sql)
 	for course in courses:
 		course_db_obj = Course(url=course.absolute_links.pop())
 		course_db_obj.save()
