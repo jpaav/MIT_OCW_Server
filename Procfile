@@ -1,0 +1,1 @@
+web: gunicorn MIT_OCW_Server.wsgi --log-file -
