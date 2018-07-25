@@ -81,7 +81,7 @@ def parse_all_courses(request):
 			course.tools = "N/A"
 		# Save course
 		course.save()
-		return HttpResponse("Parsed!")
+	return HttpResponse("Parsed!")
 
 
 def get_course(request, course_id):
