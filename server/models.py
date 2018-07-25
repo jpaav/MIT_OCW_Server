@@ -16,7 +16,7 @@ class Course(models.Model):
 	name = models.CharField(max_length=500, null=True, blank=True)
 	url = models.URLField(null=True, blank=True, max_length=1000)
 	active = models.BooleanField(blank=False, null=False, default=False)
-	course_num = models.CharField(max_length=10, null=True, blank=True)
+	course_num = models.CharField(max_length=100, null=True, blank=True)
 	instructors = models.CharField(max_length=500, null=True, blank=True)
 	level = models.CharField(max_length=500, null=True, blank=True)
 	asTaughtIn = models.CharField(max_length=500, null=True, blank=True)
