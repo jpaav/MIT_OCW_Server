@@ -25,10 +25,12 @@ from server.models import Course
 urlpatterns = [
 	url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 	url(r'^admin/', admin.site.urls),
+	url(r'^$', views.index),
 	# Parsing views, requires authentication
-	url(r'^parse_all_courses/$', views.parse_all_courses, name="parse_all_courses"),
+	url(r'^parse_all_courses_view/$', views.parse_all_courses_view, name="parse_all_courses_view"),
 	url(r'^parse_course_list/$', views.parse_course_list, name="parse_course_list"),
 	# Data reading views using REST, not authentication required
 	url(r'^get_course/(?P<course_id>[0-9]+)/$', views.get_course, name="get_course"),
+	url(r'^parse_course/(?P<course_id>[0-9]+)/$', views.parse_course, name="parse_course"),
 
 ]

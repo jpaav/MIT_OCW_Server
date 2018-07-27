@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Progress</title>
+</head>
+<body>
+<h1>Progress</h1>
+<div id="progress-report"></div>
+<script
+		src="https://code.jquery.com/jquery-3.3.1.js"
+		integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+		crossorigin="anonymous"></script>
+<script>
+	var size = {{ course_count|default_if_none:0 }};
+	var log = $('#progress-report');
+	for(var i=1; i<=size; i++) {
+		$.ajax("/parse_course/"+i.toString()+"/").done(function(response) {
+	        if (response.toString().indexOf("Successfully") === -1) {
+				log.append("<p style=\"background-color: ##ff0000;\">"+ response.toString() + "</p>");
+            }
+		    else {
+		        log.append("<p>"+ response.toString() + "</p>");
+            }
+		    window.scrollTo(0,document.body.scrollHeight);
+		});
+	}
+
+</script>
+</body>
+</html>
+

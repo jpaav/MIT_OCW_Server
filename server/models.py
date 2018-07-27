@@ -32,4 +32,3 @@ class Course(models.Model):
 		null=True,
 		blank=True
 	)
-
